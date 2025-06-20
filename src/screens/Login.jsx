@@ -1,4 +1,4 @@
-import { View, Text,Button,StyleSheet,TextInput } from 'react-native'
+import { View, Text,Button,StyleSheet,TextInput,TouchableOpacity } from 'react-native'
 import React from 'react'
 import Signup from './Signup'
 
@@ -33,6 +33,12 @@ export default function Login({navigation}) {
       </View>
       <View style={styles.signupbuttoncontainer}>
 
+        <Text style={styles.termstext}>By Continuing you agree to our Terms</Text>
+        <View style={styles.buttoncontainer}>
+     <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttontext}>Signup</Text>
+        </TouchableOpacity>
+</View>
       </View>
     </View>
   )
@@ -43,6 +49,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     justifyContent: 'center',
+    
   },
   maintextcontainer:{
     flex:1,
@@ -72,5 +79,27 @@ const styles = StyleSheet.create({
   },
   inputitem:{
     padding:10,
+  },
+  termstext:{
+     paddingLeft: 20,
+  },
+    button: {
+    alignItems: 'center',
+    backgroundColor: '#1447E6',
+    padding: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 20,
+    height: '50',
+  },
+  buttoncontainer:{
+    justifyContent: 'center',
+    paddingHorizontal: 20,
+    padding:20,
+  },
+  buttontext:{
+    color: '#ffffff',
+    fontWeight: '800',
+    fontSize: 20,
   }
 });
