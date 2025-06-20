@@ -1,10 +1,10 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-export default function Signup() {
+export default function Login() {
   return (
     <View>
-      <Text>Signup</Text>
+      <Text>Login</Text>
     </View>
   )
 }
