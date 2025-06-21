@@ -10,35 +10,39 @@ export default function Login({navigation}) {
       </View>
       <View style={styles.inputcontainer}>
              <View style={styles.inputitem}>
-              <Text  >Name</Text>
+              <Text style={styles.formtext} >Name</Text>
              <TextInput
           style={styles.input}
            placeholder="June Ceaser"
         />
              </View>
          <View style={styles.inputitem}>
-              <Text  >E mail</Text>
+              <Text style={styles.formtext} >Email address</Text>
              <TextInput
           style={styles.input}
            placeholder="june@mainframe.lk"
         />
              </View>
         <View style={styles.inputitem}>
-              <Text  >Password</Text>
+              <Text  style={styles.formtext}>Password</Text>
              <TextInput
           style={styles.input}
-           placeholder="June Ceaser"
+           placeholder="Enter password"
+           secureTextEntry={true}
         />
              </View>
       </View>
       <View style={styles.signupbuttoncontainer}>
 
-        <Text style={styles.termstext}>By Continuing you agree to our Terms</Text>
+        <Text style={styles.termstext}>By Continuing you agree to our <Text style={styles.loginnav2}>Terms of Service</Text></Text>
         <View style={styles.buttoncontainer}>
      <TouchableOpacity style={styles.button}>
           <Text style={styles.buttontext}>Signup</Text>
         </TouchableOpacity>
 </View>
+   <View style={styles.loginnavcontainer}>
+   <Text style={styles.loginnav}>Already Have an account ? <Text style={styles.loginnav2}>Signin here</Text></Text>
+      </View>
       </View>
     </View>
   )
@@ -76,6 +80,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     borderRadius: 7,
+    borderColor: '#CACACA',
+  },
+  formtext:{
+      color: 'black',
+      fontWeight: '500',
+      fontSize: 20,
   },
   inputitem:{
     padding:10,
@@ -101,5 +111,19 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontWeight: '800',
     fontSize: 20,
+  },
+  loginnav:{
+    color: '#B3B3B3',
+   
+  },
+  loginnav2:{
+      color: '#1447E6',
+      fontSize: 15,
+      fontWeight: '500'
+  },
+  loginnavcontainer:{
+     paddingTop: 150,
+     justifyContent: 'center',
+     alignItems: 'center',
   }
 });
