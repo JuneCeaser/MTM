@@ -38,6 +38,7 @@ export default function Signin({navigation}) {
         <View style={styles.buttoncontainer}>
      <TouchableOpacity style={styles.button}>
           <Text style={styles.buttontext}>Signup</Text>
+         
         </TouchableOpacity>
 </View>
    <View style={styles.loginnavcontainer}>

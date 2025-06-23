@@ -1,6 +1,7 @@
 import { View, Text,Button,StyleSheet,TextInput,TouchableOpacity } from 'react-native'
 import React from 'react'
 import Signup from './Signup'
+import MyTabs from './MyTabs'
 
 export default function Login({navigation}) {
 
@@ -32,7 +33,7 @@ export default function Login({navigation}) {
 
         
         <View style={styles.buttoncontainer}>
-     <TouchableOpacity style={styles.button}>
+     <TouchableOpacity style={styles.button} onPress={() => navigation.navigate(MyTabs)} >
           <Text style={styles.buttontext}>Login</Text>
         </TouchableOpacity>
 </View>

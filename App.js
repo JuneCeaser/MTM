@@ -3,6 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Login from './src/screens/Login';
 import Signup from './src/screens/Signup';
+import MyTabs from './src/screens/MyTabs';
+import HomeScreen from './src/screens/HomeScreen';
 
 const Stack = createStackNavigator();
 
@@ -13,6 +15,8 @@ export default function App() {
                
                 <Stack.Screen options={{ headerShown: false }}  name="Signup" component={Signup} />
                 <Stack.Screen options={{ headerShown: false }}  name="Login" component={Login} />
+                <Stack.Screen options={{ headerShown: false }}  name="MyTabs" component={MyTabs} />
+                 
            </Stack.Navigator>
 
       </NavigationContainer>
