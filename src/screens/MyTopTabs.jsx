@@ -6,7 +6,7 @@ const Tab = createMaterialTopTabNavigator();
 
 export default function MyTopTabs() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator >
       <Tab.Screen name="To Do" component={ToDoScreen} />
       <Tab.Screen name="In Progress" component={InProgressScreen} />
        <Tab.Screen name="Done" component={DoneScreen} />
