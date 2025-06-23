@@ -1389,6 +1389,15 @@
     use-latest-callback "^0.2.4"
     use-sync-external-store "^1.5.0"
 
+"@react-navigation/material-top-tabs@^7.3.1":
+  version "7.3.1"
+  resolved "https://registry.yarnpkg.com/@react-navigation/material-top-tabs/-/material-top-tabs-7.3.1.tgz#f9be2aabd3095069f00b8ac35a56e4c27e61d9bd"
+  integrity sha512-Q2zWLF46XdaCdZ8d3Sjo2PSA8RTDd7ud735vS9DnmkgxrgPX+DDhsbOclM8I68ZcAKqjRDfHywUAHN62hehyfA==
+  dependencies:
+    "@react-navigation/elements" "^2.5.1"
+    color "^4.2.3"
+    react-native-tab-view "^4.1.2"
+
 "@react-navigation/native-stack@^7.3.18":
   version "7.3.18"
   resolved "https://registry.yarnpkg.com/@react-navigation/native-stack/-/native-stack-7.3.18.tgz#92775247160e1b7fe8d994b809f496d1f1763608"
@@ -3767,6 +3776,11 @@ react-native-is-edge-to-edge@^1.1.6, react-native-is-edge-to-edge@^1.1.7:
   resolved "https://registry.yarnpkg.com/react-native-is-edge-to-edge/-/react-native-is-edge-to-edge-1.1.7.tgz#28947688f9fafd584e73a4f935ea9603bd9b1939"
   integrity sha512-EH6i7E8epJGIcu7KpfXYXiV2JFIYITtq+rVS8uEb+92naMRBdxhTuS8Wn2Q7j9sqyO0B+Xbaaf9VdipIAmGW4w==
 
+react-native-pager-view@6.7.1:
+  version "6.7.1"
+  resolved "https://registry.yarnpkg.com/react-native-pager-view/-/react-native-pager-view-6.7.1.tgz#60d52dedbcc92ee7037a13287ebeed5f74e49df7"
+  integrity sha512-cBSr6xw4g5N7Kd3VGWcf+kmaH7iBWb0DXAf2bVo3bXkzBcBbTOmYSvc0LVLHhUPW8nEq5WjT9LCIYAzgF++EXw==
+
 react-native-safe-area-context@5.4.0:
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-5.4.0.tgz#04b51940408c114f75628a12a93569d30c525454"
@@ -3780,6 +3794,13 @@ react-native-screens@~4.11.1:
     react-freeze "^1.0.0"
     react-native-is-edge-to-edge "^1.1.7"
     warn-once "^0.1.0"
+
+react-native-tab-view@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-4.1.2.tgz#c4aa05812668f24a048d2e574d53182f47f4fed2"
+  integrity sha512-uzC1hxZGNXeQay8rSjCc7egnoYGHRpB/Y1tAwK5/nnZwrziKry7T6+gNscZgoq88+7Aag/JeNOifdWMZyRclOA==
+  dependencies:
+    use-latest-callback "^0.2.4"
 
 react-native@0.79.3:
   version "0.79.3"

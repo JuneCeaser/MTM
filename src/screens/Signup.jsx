@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
   },
     button: {
     alignItems: 'center',
-    backgroundColor: '#1447E6',
+    backgroundColor: '#3F559C',
     padding: 10,
     alignItems: 'center',
     justifyContent: 'center',
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
    
   },
   loginnav2:{
-      color: '#1447E6',
+      color: '#3F559C',
       fontSize: 15,
       fontWeight: '500'
   },

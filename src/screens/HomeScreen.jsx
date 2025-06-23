@@ -1,11 +1,12 @@
 import { Text, View,StyleSheet } from 'react-native'
 import React, { Component } from 'react'
+import MyTopTabs from './MyTopTabs'
 
 export default class HomeScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>HomeScreen</Text>
+        <MyTopTabs/>
       </View>
     )
   }
@@ -16,6 +17,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     justifyContent: 'center',
-    
+    paddingTop: 100,
+    paddingLeft: 10,
+    paddingRight: 10,
   }
 })
