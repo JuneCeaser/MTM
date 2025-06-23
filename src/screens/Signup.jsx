@@ -1,6 +1,6 @@
 import { View, Text,Button,StyleSheet,TextInput,TouchableOpacity } from 'react-native'
 import React from 'react'
-import Signup from './Login'
+import Login from './Login'
 
 export default function Signin({navigation}) {
   return (
@@ -41,7 +41,7 @@ export default function Signin({navigation}) {
         </TouchableOpacity>
 </View>
    <View style={styles.loginnavcontainer}>
-   <Text style={styles.loginnav}>Already Have an account ? <Text style={styles.loginnav2}>Signin here</Text></Text>
+   <Text style={styles.loginnav}>Already Have an account ? <Text style={styles.loginnav2} onPress={() => navigation.navigate('Login')}>Signin here</Text></Text>
       </View>
       </View>
     </View>
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   maintext:{
      fontSize: 35,
      fontWeight: '600',
-     paddingTop:30,
+     paddingTop:60,
      paddingLeft: 10,
   },
   inputcontainer:{
@@ -85,13 +85,14 @@ const styles = StyleSheet.create({
   formtext:{
       color: 'black',
       fontWeight: '500',
-      fontSize: 20,
+      fontSize: 17,
   },
   inputitem:{
     padding:10,
   },
   termstext:{
      paddingLeft: 20,
+     color: '#B3B3B3'
   },
     button: {
     alignItems: 'center',

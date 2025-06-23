@@ -3,19 +3,14 @@ import React from 'react'
 import Signup from './Signup'
 
 export default function Login({navigation}) {
+
+  
   return (
     <View style={styles.container}>
       <View style={styles.maintextcontainer}>
-      <Text style={styles.maintext}>Create  an account</Text>
+      <Text style={styles.maintext}>Login</Text>
       </View>
       <View style={styles.inputcontainer}>
-             <View style={styles.inputitem}>
-              <Text style={styles.formtext} >Name</Text>
-             <TextInput
-          style={styles.input}
-           placeholder="June Ceaser"
-        />
-             </View>
          <View style={styles.inputitem}>
               <Text style={styles.formtext} >Email address</Text>
              <TextInput
@@ -23,25 +18,26 @@ export default function Login({navigation}) {
            placeholder="june@mainframe.lk"
         />
              </View>
-        <View style={styles.inputitem}>
-              <Text  style={styles.formtext}>Password</Text>
-             <TextInput
-          style={styles.input}
-           placeholder="Enter password"
-           secureTextEntry={true}
-        />
-             </View>
+
+              <View style={styles.inputitem}>
+                           <Text  style={styles.formtext}>Password</Text>
+                          <TextInput
+                       style={styles.input}
+                        placeholder="Enter password"
+                        secureTextEntry={true}
+                     />
+                          </View>
       </View>
       <View style={styles.signupbuttoncontainer}>
 
-        <Text style={styles.termstext}>By Continuing you agree to our <Text style={styles.loginnav2}>Terms of Service</Text></Text>
+        
         <View style={styles.buttoncontainer}>
      <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttontext}>Signup</Text>
+          <Text style={styles.buttontext}>Login</Text>
         </TouchableOpacity>
 </View>
    <View style={styles.loginnavcontainer}>
-   <Text style={styles.loginnav}>Already Have an account ? <Text style={styles.loginnav2}>Signin here</Text></Text>
+   <Text style={styles.loginnav2} onPress={() => navigation.navigate('Signup')}>Create an account</Text>
       </View>
       </View>
     </View>
@@ -56,14 +52,14 @@ const styles = StyleSheet.create({
     
   },
   maintextcontainer:{
-    flex:1,
+    flex:2,
     backgroundColor:'#ffffff',
     paddingTop: 20,
   },
   maintext:{
      fontSize: 35,
      fontWeight: '600',
-     paddingTop:30,
+     paddingTop:120,
      paddingLeft: 10,
   },
   inputcontainer:{
@@ -105,7 +101,7 @@ const styles = StyleSheet.create({
   buttoncontainer:{
     justifyContent: 'center',
     paddingHorizontal: 20,
-    padding:20,
+    padding:10,
   },
   buttontext:{
     color: '#ffffff',
@@ -118,11 +114,11 @@ const styles = StyleSheet.create({
   },
   loginnav2:{
       color: '#1447E6',
-      fontSize: 15,
-      fontWeight: '500'
+      fontSize: 17,
+      fontWeight: '800'
   },
   loginnavcontainer:{
-     paddingTop: 150,
+     paddingTop: 100,
      justifyContent: 'center',
      alignItems: 'center',
   }
