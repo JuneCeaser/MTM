@@ -5,15 +5,33 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  Alert,
+  Platform,
+  Vibration,
 } from "react-native";
 import React, { useState } from "react";
 import Login from "./Login";
 import { ScrollView } from "react-native-gesture-handler";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export default function Signin({ navigation }) {
+export default function Signup({ navigation }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const signupfunction = async () => {
+    try {
+      const user = JSON.stringify({
+        name,
+        email,
+        password,
+      });
+      await AsyncStorage.setItem("userdata", user);
+      Alert.alert("sucessfull", "succesfully saved");
+    } catch (e) {
+      // saving error
+    }
+  };
 
   return (
     <ScrollView style={styles.container}>
@@ -26,7 +44,7 @@ export default function Signin({ navigation }) {
           <TextInput
             style={styles.input}
             placeholder="June Ceaser"
-            onChange={setName}
+            onChangeText={setName}
           />
         </View>
         <View style={styles.inputitem}>
@@ -34,7 +52,7 @@ export default function Signin({ navigation }) {
           <TextInput
             style={styles.input}
             placeholder="june@mainframe.lk"
-            onChange={setEmail}
+            onChangeText={setEmail}
           />
         </View>
         <View style={styles.inputitem}>
@@ -43,7 +61,7 @@ export default function Signin({ navigation }) {
             style={styles.input}
             placeholder="Enter password"
             secureTextEntry={true}
-            onChange={setPassword}
+            onChangeText={setPassword}
           />
         </View>
       </View>
@@ -53,7 +71,7 @@ export default function Signin({ navigation }) {
           <Text style={styles.loginnav2}>Terms of Service</Text>
         </Text>
         <View style={styles.buttoncontainer}>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={signupfunction}>
             <Text style={styles.buttontext}>Signup</Text>
           </TouchableOpacity>
         </View>
