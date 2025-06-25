@@ -1,0 +1,107 @@
+import {
+  Text,
+  View,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
+import React, { Component } from "react";
+
+export default class AddScreen extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <View style={styles.titlecontainer}>
+          <Text style={styles.title}>Add new Task</Text>
+        </View>
+        <View style={styles.inputcontainer}>
+          <View style={styles.inputitem}>
+            <Text style={styles.formtext}>Title</Text>
+            <TextInput style={styles.input} placeholder="Enter Title" />
+          </View>
+          <View style={styles.inputitem}>
+            <Text style={styles.formtext}>Discription</Text>
+            <TextInput
+              editable
+              multiline
+              numberOfLines={4}
+              style={styles.input}
+              placeholder="Enter Discription"
+            />
+          </View>
+          <View style={styles.inputitem}>
+            <Text style={styles.formtext}>Due Date</Text>
+            <TextInput style={styles.input} placeholder="Select Due Date" />
+          </View>
+
+          <View style={styles.buttoncontainer}>
+            <TouchableOpacity style={styles.button}>
+              <Text style={styles.buttontext}>Save</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View style={styles.emptyspace}></View>
+      </View>
+    );
+  }
+}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    justifyContent: "center",
+  },
+  titlecontainer: {
+    flex: 1,
+    backgroundColor: "#ffffff",
+  },
+  title: {
+    paddingTop: 60,
+    paddingLeft: 30,
+    fontSize: 35,
+    fontWeight: "600",
+  },
+  inputcontainer: {
+    flex: 3,
+    backgroundColor: "#ffffff",
+  },
+  emptyspace: {
+    flex: 2,
+    backgroundColor: "#ffffff",
+  },
+  formtext: {
+    color: "black",
+    fontWeight: "500",
+    fontSize: 17,
+  },
+  inputitem: {
+    padding: 10,
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 7,
+    borderColor: "#CACACA",
+  },
+  button: {
+    alignItems: "center",
+    backgroundColor: "#3F559C",
+    padding: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 10,
+    height: "50",
+  },
+  buttoncontainer: {
+    justifyContent: "center",
+    paddingHorizontal: 20,
+    padding: 10,
+  },
+  buttontext: {
+    color: "#ffffff",
+    fontWeight: "800",
+    fontSize: 20,
+  },
+});
