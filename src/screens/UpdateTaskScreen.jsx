@@ -6,10 +6,10 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { Component, useState } from "react";
+import MyTabs from "./MyTabs";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import { Ionicons } from "@expo/vector-icons";
 
-export default function AddScreeen() {
+export default function UpdateTaskScreen({ navigation }) {
   const [date, setDate] = useState(new Date(1598051730000));
   const [mode, setMode] = useState("date");
   const [show, setShow] = useState(false);
@@ -32,7 +32,7 @@ export default function AddScreeen() {
   return (
     <View style={styles.container}>
       <View style={styles.titlecontainer}>
-        <Text style={styles.title}>Add new Task </Text>
+        <Text style={styles.title}>Update task </Text>
       </View>
       <View style={styles.inputcontainer}>
         <View style={styles.inputitem}>
@@ -65,7 +65,10 @@ export default function AddScreeen() {
         </View>
 
         <View style={styles.buttoncontainer}>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate(MyTabs)}
+          >
             <Text style={styles.buttontext}>Save</Text>
           </TouchableOpacity>
         </View>
