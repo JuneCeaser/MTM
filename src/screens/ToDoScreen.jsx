@@ -1,5 +1,5 @@
-import { Text, View } from 'react-native'
-import React, { Component } from 'react'
+import { Text, View } from "react-native";
+import React, { Component } from "react";
 
 export default class ToDoScreen extends Component {
   render() {
@@ -7,6 +7,6 @@ export default class ToDoScreen extends Component {
       <View>
         <Text>ToDoScreen</Text>
       </View>
-    )
+    );
   }
 }
