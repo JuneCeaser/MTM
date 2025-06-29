@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { useState } from "react";
-
 import MyTabs from "./MyTabs";
 
 export default function Login({ navigation }) {

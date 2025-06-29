@@ -5,46 +5,77 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
+import DateTimePicker from "@react-native-community/datetimepicker";
+import { Ionicons } from "@expo/vector-icons";
 
-export default class AddScreen extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.titlecontainer}>
-          <Text style={styles.title}>Add new Task</Text>
-        </View>
-        <View style={styles.inputcontainer}>
-          <View style={styles.inputitem}>
-            <Text style={styles.formtext}>Title</Text>
-            <TextInput style={styles.input} placeholder="Enter Title" />
-          </View>
-          <View style={styles.inputitem}>
-            <Text style={styles.formtext}>Discription</Text>
-            <TextInput
-              editable
-              multiline
-              numberOfLines={4}
-              style={styles.input}
-              placeholder="Enter Discription"
-            />
-          </View>
-          <View style={styles.inputitem}>
-            <Text style={styles.formtext}>Due Date</Text>
-            <TextInput style={styles.input} placeholder="Select Due Date" />
-          </View>
+export default function AddScreeen() {
+  const [date, setDate] = useState(new Date(1598051730000));
+  const [mode, setMode] = useState("date");
+  const [show, setShow] = useState(false);
 
-          <View style={styles.buttoncontainer}>
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttontext}>Save</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-        <View style={styles.emptyspace}></View>
+  const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate;
+    setShow(false);
+    setDate(currentDate);
+  };
+
+  const showMode = (currentMode) => {
+    setShow(true);
+    setMode(currentMode);
+  };
+
+  const showDatepicker = () => {
+    showMode("date");
+  };
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.titlecontainer}>
+        <Text style={styles.title}>Add new Task </Text>
       </View>
-    );
-  }
+      <View style={styles.inputcontainer}>
+        <View style={styles.inputitem}>
+          <Text style={styles.formtext}>Title</Text>
+          <TextInput style={styles.input} placeholder="Enter Title" />
+        </View>
+        <View style={styles.inputitem}>
+          <Text style={styles.formtext}>Discription</Text>
+          <TextInput
+            editable
+            multiline
+            numberOfLines={4}
+            style={styles.input}
+            placeholder="Enter Discription"
+          />
+        </View>
+        <View style={styles.inputitem}>
+          <Text style={styles.formtext}>Due Date</Text>
+          <TouchableOpacity style={styles.input} onPressIn={showDatepicker}>
+            <Text>{date.toLocaleString()}</Text>
+            {show && (
+              <DateTimePicker
+                testID="dateTimePicker"
+                value={date}
+                mode={mode}
+                is24Hour={true}
+                onChange={onChange}
+              />
+            )}
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.buttoncontainer}>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttontext}>Save</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+      <View style={styles.emptyspace}></View>
+    </View>
+  );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
