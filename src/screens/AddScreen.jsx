@@ -10,7 +10,7 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import { Ionicons } from "@expo/vector-icons";
 
 export default function AddScreeen() {
-  const [date, setDate] = useState(new Date(1598051730000));
+  const [date, setDate] = useState(new Date());
   const [mode, setMode] = useState("date");
   const [show, setShow] = useState(false);
 
@@ -52,7 +52,7 @@ export default function AddScreeen() {
         <View style={styles.inputitem}>
           <Text style={styles.formtext}>Due Date</Text>
           <TouchableOpacity style={styles.input} onPressIn={showDatepicker}>
-            <Text>{date.toLocaleString()}</Text>
+            <Text>{date.toDateString()}</Text>
             {show && (
               <DateTimePicker
                 testID="dateTimePicker"
