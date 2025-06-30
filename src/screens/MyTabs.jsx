@@ -13,9 +13,9 @@ export default function MyTabs(navigation) {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
-
+          size = 30;
           if (route.name === "Home") {
-            iconName = focused ? "home" : "home";
+            iconName = focused ? "home-sharp" : "home-sharp";
           } else if (route.name === "Add") {
             iconName = focused ? "add-circle-sharp" : "add-circle-sharp";
           } else if (route.name === "Profile") {
@@ -25,6 +25,7 @@ export default function MyTabs(navigation) {
         },
         tabBarActiveTintColor: "#3F559C",
         tabBarInactiveTintColor: "gray",
+        tabBarShowLabel: false,
       })}
     >
       <Tab.Screen
@@ -38,7 +39,7 @@ export default function MyTabs(navigation) {
         component={AddScreen}
       />
       <Tab.Screen
-        options={{ headerShown: false }}
+        options={{ headerShown: true }}
         name="Profile"
         component={ProfileScreen}
       />
