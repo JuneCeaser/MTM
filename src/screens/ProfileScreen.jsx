@@ -1,25 +1,23 @@
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import React, { Component } from "react";
 
-export default class ProfileScreen extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.container1}>
-          <Text style={styles.nametext}>Full Name</Text>
-          <Text style={styles.username}>June Ceaser De Soysa</Text>
-          <Text style={styles.nametext}>E mail</Text>
-          <Text style={styles.username}>june@mainframe.lk</Text>
-          <View style={styles.buttoncontainer}>
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttontext}>Logout</Text>
-            </TouchableOpacity>
-          </View>
+export default function ProfileScreen() {
+  return (
+    <View style={styles.container}>
+      <View style={styles.container1}>
+        <Text style={styles.nametext}>Full Name</Text>
+        <Text style={styles.username}>June Ceaser De Soysa</Text>
+        <Text style={styles.nametext}>E mail</Text>
+        <Text style={styles.username}>june@mainframe.lk</Text>
+        <View style={styles.buttoncontainer}>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttontext}>Logout</Text>
+          </TouchableOpacity>
         </View>
-        <View style={styles.container2}></View>
       </View>
-    );
-  }
+      <View style={styles.container2}></View>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

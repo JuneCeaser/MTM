@@ -1,17 +1,24 @@
-import { Text, View, Button } from "react-native";
+import { Text, View, Button, StyleSheet, ScrollView } from "react-native";
 import React, { Component } from "react";
-import UpdateTaskScreen from "./UpdateTaskScreen";
+import Task from "../components/Task";
 
 export default function ToDoScreen({ navigation }) {
   return (
-    <View>
-      <Text>ToDoScreen</Text>
-      <Button
-        onPress={() => navigation.navigate("UpdateTaskScreen")}
-        title="update task"
-        color="#841584"
-        accessibilityLabel="Learn more about this purple button"
-      />
-    </View>
+    <ScrollView style={styles.container}>
+      <Task />
+      <Task />
+      <Task />
+      <Task />
+      <Task />
+      <Task />
+      <Task />
+    </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+});
