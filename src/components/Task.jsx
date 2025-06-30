@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import React from "react";
 
 export default function Task() {
@@ -6,7 +6,10 @@ export default function Task() {
     <View style={styles.container}>
       <View style={styles.titlecontainer}>
         <Text style={styles.title}>Task Title</Text>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => Alert.alert("hello", "this is alert")}
+        >
           <Text>Status</Text>
         </TouchableOpacity>
       </View>
