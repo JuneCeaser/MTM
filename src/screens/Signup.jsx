@@ -8,6 +8,8 @@ import {
   Alert,
   Platform,
   Vibration,
+  KeyboardAvoidingView,
+  Keyboard,
 } from "react-native";
 import React, { useState } from "react";
 import { ScrollView } from "react-native-gesture-handler";
@@ -65,8 +67,9 @@ export default function Signup({ navigation }) {
           <TextInput
             style={styles.input}
             placeholder="june@mainframe.lk"
-            keyboardType="email-address"
             onChangeText={setEmail}
+            keyboardType="email-address"
+            autoCapitalize="none"
           />
         </View>
         <View style={styles.inputitem}>
