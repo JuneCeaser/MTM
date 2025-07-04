@@ -36,13 +36,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   nametext: {
-    fontSize: 25,
+    fontSize: 20,
     fontWeight: "600",
     paddingTop: 60,
     paddingLeft: 20,
   },
   username: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: "400",
     paddingTop: 20,
     paddingLeft: 20,
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 10,
-    height: "50",
+    height: 45,
   },
   buttontext: {
     color: "#ffffff",
