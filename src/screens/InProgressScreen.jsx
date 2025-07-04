@@ -1,12 +1,19 @@
-import { Text, View } from 'react-native'
-import React, { Component } from 'react'
+import { Text, View, Button, StyleSheet, ScrollView } from "react-native";
+import React, { Component } from "react";
+import Task from "../components/Task";
 
-export default class InProgressScreen extends Component {
-  render() {
-    return (
-      <View>
-        <Text>InProgressScreen</Text>
-      </View>
-    )
-  }
+export default function InProgressScreen({ navigation }) {
+  return (
+    <ScrollView style={styles.container}>
+      <Task />
+      <Task />
+    </ScrollView>
+  );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+});

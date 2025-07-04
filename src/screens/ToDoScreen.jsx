@@ -1,12 +1,24 @@
-import { Text, View } from "react-native";
+import { Text, View, Button, StyleSheet, ScrollView } from "react-native";
 import React, { Component } from "react";
+import Task from "../components/Task";
 
-export default class ToDoScreen extends Component {
-  render() {
-    return (
-      <View>
-        <Text>ToDoScreen</Text>
-      </View>
-    );
-  }
+export default function ToDoScreen({ navigation }) {
+  return (
+    <ScrollView style={styles.container}>
+      <Task />
+      <Task />
+      <Task />
+      <Task />
+      <Task />
+      <Task />
+      <Task />
+    </ScrollView>
+  );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+});

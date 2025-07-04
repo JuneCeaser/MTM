@@ -5,14 +5,44 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import React, { useState } from "react";
-
 import MyTabs from "./MyTabs";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Login({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const validate = (email) => {
+    const re = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    return re.test(email);
+  };
+
+  const loginFunction = async () => {
+    if (!email || !password) {
+      Alert.alert("Error", "please fill all textInputs");
+      return;
+    }
+    if (!validate(email)) {
+      Alert.alert("Error", "please enter valid email");
+      return;
+    }
+
+    try {
+      const userData = await AsyncStorage.getItem("userdata");
+      const user = JSON.parse(userData);
+
+      if (user.email === email && user.password === password) {
+        navigation.navigate(MyTabs);
+      } else {
+        Alert.alert("Error", "Invalid email or password");
+      }
+    } catch (e) {
+      // error reading value
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -25,7 +55,9 @@ export default function Login({ navigation }) {
           <TextInput
             style={styles.input}
             placeholder="june@mainframe.lk"
-            onChange={setEmail}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+            autoCapitalize="none"
           />
         </View>
 
@@ -35,16 +67,13 @@ export default function Login({ navigation }) {
             style={styles.input}
             placeholder="Enter password"
             secureTextEntry={true}
-            onChange={setPassword}
+            onChangeText={setPassword}
           />
         </View>
       </View>
       <View style={styles.signupbuttoncontainer}>
         <View style={styles.buttoncontainer}>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.navigate(MyTabs)}
-          >
+          <TouchableOpacity style={styles.button} onPress={loginFunction}>
             <Text style={styles.buttontext}>Login</Text>
           </TouchableOpacity>
         </View>

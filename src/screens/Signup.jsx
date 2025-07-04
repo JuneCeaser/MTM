@@ -8,9 +8,10 @@ import {
   Alert,
   Platform,
   Vibration,
+  KeyboardAvoidingView,
+  Keyboard,
 } from "react-native";
 import React, { useState } from "react";
-import Login from "./Login";
 import { ScrollView } from "react-native-gesture-handler";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -19,7 +20,21 @@ export default function Signup({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const validate = (email) => {
+    const re = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    return re.test(email);
+  };
+
   const signupfunction = async () => {
+    if (!name || !email || !password) {
+      Alert.alert("Error", "please fill all textInputs");
+      return;
+    }
+    if (!validate(email)) {
+      Alert.alert("Error", "please enter valid email");
+      return;
+    }
+
     try {
       const user = JSON.stringify({
         name,
@@ -53,6 +68,8 @@ export default function Signup({ navigation }) {
             style={styles.input}
             placeholder="june@mainframe.lk"
             onChangeText={setEmail}
+            keyboardType="email-address"
+            autoCapitalize="none"
           />
         </View>
         <View style={styles.inputitem}>
