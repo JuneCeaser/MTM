@@ -1,9 +1,9 @@
 import { View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import React from "react";
 
-export default function Task() {
+export default function Task({}) {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container}>
       <View style={styles.titlecontainer}>
         <Text style={styles.title}>Task Title</Text>
         <TouchableOpacity
@@ -18,7 +18,7 @@ export default function Task() {
         sdfdsdfsdfsfds sdfsdfsdf
       </Text>
       <Text style={styles.date}>2025/6/30</Text>
-    </View>
+    </TouchableOpacity>
   );
 }
 

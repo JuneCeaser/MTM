@@ -1,7 +1,7 @@
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import React, { Component } from "react";
 
-export default function ProfileScreen() {
+export default function ProfileScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.container1}>
@@ -10,7 +10,10 @@ export default function ProfileScreen() {
         <Text style={styles.nametext}>E mail</Text>
         <Text style={styles.username}>june@mainframe.lk</Text>
         <View style={styles.buttoncontainer}>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate("UpdateTaskScreen")}
+          >
             <Text style={styles.buttontext}>Logout</Text>
           </TouchableOpacity>
         </View>

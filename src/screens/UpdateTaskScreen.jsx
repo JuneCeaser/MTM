@@ -8,11 +8,13 @@ import {
 import React, { Component, useState } from "react";
 import MyTabs from "./MyTabs";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import { Picker } from "@react-native-picker/picker";
 
 export default function UpdateTaskScreen({ navigation }) {
   const [date, setDate] = useState(new Date());
   const [mode, setMode] = useState("date");
   const [show, setShow] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState();
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate;
@@ -62,6 +64,16 @@ export default function UpdateTaskScreen({ navigation }) {
               />
             )}
           </TouchableOpacity>
+          <Picker
+            selectedValue={selectedLanguage}
+            onValueChange={(itemValue, itemIndex) =>
+              setSelectedLanguage(itemValue)
+            }
+          >
+            <Picker.Item label="ToDo" value="ToDo" />
+            <Picker.Item label="Inprogress" value="Inprogress" />
+            <Picker.Item label="Done" value="Done" />
+          </Picker>
         </View>
 
         <View style={styles.buttoncontainer}>

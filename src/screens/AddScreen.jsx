@@ -8,11 +8,15 @@ import {
 import React, { Component, useState } from "react";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { Ionicons } from "@expo/vector-icons";
+import { Picker } from "@react-native-picker/picker";
 
 export default function AddScreeen() {
+  const [title, seTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [date, setDate] = useState(new Date());
   const [mode, setMode] = useState("date");
   const [show, setShow] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState("");
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate;
@@ -37,7 +41,11 @@ export default function AddScreeen() {
       <View style={styles.inputcontainer}>
         <View style={styles.inputitem}>
           <Text style={styles.formtext}>Title</Text>
-          <TextInput style={styles.input} placeholder="Enter Title" />
+          <TextInput
+            style={styles.input}
+            onChange={seTitle}
+            placeholder="Enter Title"
+          />
         </View>
         <View style={styles.inputitem}>
           <Text style={styles.formtext}>Discription</Text>
@@ -46,6 +54,7 @@ export default function AddScreeen() {
             multiline
             numberOfLines={4}
             style={styles.input}
+            onChange={setDescription}
             placeholder="Enter Discription"
           />
         </View>
@@ -63,6 +72,16 @@ export default function AddScreeen() {
             )}
           </TouchableOpacity>
         </View>
+        <Picker
+          selectedValue={selectedLanguage}
+          onValueChange={(itemValue, itemIndex) =>
+            setSelectedLanguage(itemValue)
+          }
+        >
+          <Picker.Item label="ToDo" value="ToDo" />
+          <Picker.Item label="Inprogress" value="Inprogress" />
+          <Picker.Item label="Done" value="Done" />
+        </Picker>
 
         <View style={styles.buttoncontainer}>
           <TouchableOpacity style={styles.button}>
@@ -96,7 +115,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
   },
   emptyspace: {
-    flex: 2,
+    flex: 0.5,
     backgroundColor: "#ffffff",
   },
   formtext: {
