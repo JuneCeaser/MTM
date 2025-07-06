@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import React from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Task({
   navigation,
@@ -8,8 +9,20 @@ export default function Task({
   description,
   date,
   status,
-  route,
 }) {
+  const deleteTask = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem("tasksList2");
+      let tasks = jsonValue != null ? JSON.parse(jsonValue) : [];
+
+      tasks = tasks.filter((task) => task.id !== id);
+      await AsyncStorage.setItem("tasksList2", JSON.stringify(tasks));
+      Alert.alert("Succesfull", "task deleted");
+    } catch (e) {
+      // error reading value
+    }
+  };
+
   const showAlert = () =>
     Alert.alert("Update or Delete task", "", [
       {
@@ -18,7 +31,7 @@ export default function Task({
       },
       {
         text: "Delete",
-        onPress: () => Alert.alert("Cancel Pressed"),
+        onPress: deleteTask,
         style: "Delete",
       },
       {
