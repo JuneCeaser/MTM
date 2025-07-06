@@ -1,7 +1,14 @@
 import { View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import React from "react";
 
-export default function Task({ navigation, title, description, date, status }) {
+export default function Task({
+  navigation,
+  id,
+  title,
+  description,
+  date,
+  status,
+}) {
   const showAlert = () =>
     Alert.alert("Update or Delete task", "", [
       {
@@ -15,7 +22,7 @@ export default function Task({ navigation, title, description, date, status }) {
       },
       {
         text: "Update",
-        onPress: () => navigation.navigate("UpdateTaskScreen"),
+        onPress: () => navigation.navigate("UpdateTaskScreen", { taskId: id }),
         style: "Update",
       },
     ]);
