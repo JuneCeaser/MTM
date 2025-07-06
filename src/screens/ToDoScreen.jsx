@@ -31,6 +31,7 @@ export default function ToDoScreen({ navigation }) {
         renderItem={({ item }) => (
           <Task
             navigation={navigation}
+            id={item.id}
             title={item.title}
             description={item.description}
             date={item.dueDate}

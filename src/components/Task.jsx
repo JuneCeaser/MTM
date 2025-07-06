@@ -8,6 +8,7 @@ export default function Task({
   description,
   date,
   status,
+  route,
 }) {
   const showAlert = () =>
     Alert.alert("Update or Delete task", "", [
@@ -33,7 +34,7 @@ export default function Task({
         <Text style={styles.title}>{title}</Text>
 
         <TouchableOpacity style={styles.button}>
-          <Text>{status}</Text>
+          <Text style={styles.buttonText}>{status}</Text>
         </TouchableOpacity>
       </View>
       <Text style={styles.decription}>{description}</Text>
@@ -55,6 +56,7 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     paddingTop: 10,
     color: "#fff",
+    flexShrink: 1,
   },
   decription: {
     fontSize: 15,
@@ -74,11 +76,13 @@ const styles = StyleSheet.create({
   },
   titlecontainer: {
     flexDirection: "row",
+    justifyContent: "space-between",
   },
   button: {
     backgroundColor: "#fff",
     marginLeft: 120,
     marginTop: 10,
+    marginRight: 10,
     paddingLeft: 20,
     paddingRight: 20,
     borderRadius: 5,
