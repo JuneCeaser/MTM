@@ -1,23 +1,18 @@
 import { View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import React from "react";
 
-export default function Task({ navigation }) {
+export default function Task({ navigation, title, description, date, status }) {
   return (
     <TouchableOpacity style={styles.container}>
       <View style={styles.titlecontainer}>
-        <Text style={styles.title}>Task Title</Text>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("UpdateTaskScreen")}
-        >
-          <Text>Status</Text>
+        <Text style={styles.title}>{title}</Text>
+
+        <TouchableOpacity style={styles.button}>
+          <Text>{status}</Text>
         </TouchableOpacity>
       </View>
-      <Text style={styles.decription}>
-        Lorem ipsum dolor sit, amet consectetur adipisicing asdsdfszdf
-        sdfdsdfsdfsfds sdfsdfsdf
-      </Text>
-      <Text style={styles.date}>2025/6/30</Text>
+      <Text style={styles.decription}>{description}</Text>
+      <Text style={styles.date}>{date}</Text>
     </TouchableOpacity>
   );
 }
@@ -57,7 +52,7 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: "#fff",
-    marginLeft: 190,
+    marginLeft: 120,
     marginTop: 10,
     paddingLeft: 20,
     paddingRight: 20,

@@ -37,7 +37,7 @@ export default function AddScreeen() {
 
   const saveTask = async () => {
     const newTask = {
-      id: Date.now(),
+      id: Date.now().toString(),
       title: title,
       description: description,
       dueDate: date,
@@ -45,12 +45,12 @@ export default function AddScreeen() {
     };
 
     try {
-      const jsonValue = await AsyncStorage.getItem("tasks");
+      const jsonValue = await AsyncStorage.getItem("tasksList2");
       const tasks = jsonValue != null ? JSON.parse(jsonValue) : [];
 
       tasks.push(newTask);
 
-      await AsyncStorage.setItem("tasks", JSON.stringify(tasks));
+      await AsyncStorage.setItem("tasksList2", JSON.stringify(tasks));
       Alert.alert("Task save succes");
     } catch (e) {
       // error reading value
