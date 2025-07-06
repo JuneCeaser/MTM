@@ -1,14 +1,14 @@
 import { View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import React from "react";
 
-export default function Task({}) {
+export default function Task({ navigation }) {
   return (
     <TouchableOpacity style={styles.container}>
       <View style={styles.titlecontainer}>
         <Text style={styles.title}>Task Title</Text>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => Alert.alert("hello", "this is alert")}
+          onPress={() => navigation.navigate("UpdateTaskScreen")}
         >
           <Text>Status</Text>
         </TouchableOpacity>
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#3F559C",
     height: "auto",
-    marginTop: "10",
+    marginTop: 10,
     borderRadius: 10,
   },
   title: {

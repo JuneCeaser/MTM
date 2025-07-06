@@ -12,7 +12,7 @@ export default function ProfileScreen({ navigation }) {
         <View style={styles.buttoncontainer}>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => navigation.navigate("UpdateTaskScreen")}
+            onPress={() => navigation.navigate("Login")}
           >
             <Text style={styles.buttontext}>Logout</Text>
           </TouchableOpacity>

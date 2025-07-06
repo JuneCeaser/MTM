@@ -6,6 +6,7 @@ import Signup from "./src/screens/Signup";
 import MyTabs from "./src/screens/MyTabs";
 import HomeScreen from "./src/screens/HomeScreen";
 import UpdateTaskScreen from "./src/screens/UpdateTaskScreen";
+import Task from "./src/components/Task";
 
 const Stack = createStackNavigator();
 
@@ -32,6 +33,11 @@ export default function App() {
           options={{ headerShown: false }}
           name="UpdateTaskScreen"
           component={UpdateTaskScreen}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="Task"
+          component={Task}
         />
       </Stack.Navigator>
     </NavigationContainer>

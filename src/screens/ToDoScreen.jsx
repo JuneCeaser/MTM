@@ -5,13 +5,13 @@ import Task from "../components/Task";
 export default function ToDoScreen({ navigation }) {
   return (
     <ScrollView style={styles.container}>
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
+      <Task navigation={navigation} />
+      <Task navigation={navigation} />
+      <Task navigation={navigation} />
+      <Task navigation={navigation} />
+      <Task navigation={navigation} />
+      <Task navigation={navigation} />
+      <Task navigation={navigation} />
     </ScrollView>
   );
 }
