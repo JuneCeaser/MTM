@@ -30,6 +30,7 @@ export default function ToDoScreen({ navigation }) {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <Task
+            navigation={navigation}
             title={item.title}
             description={item.description}
             date={item.dueDate}

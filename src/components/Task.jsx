@@ -2,8 +2,26 @@ import { View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import React from "react";
 
 export default function Task({ navigation, title, description, date, status }) {
+  const showAlert = () =>
+    Alert.alert("Update or Delete task", "", [
+      {
+        text: "Cancel",
+        style: "cancel",
+      },
+      {
+        text: "Delete",
+        onPress: () => Alert.alert("Cancel Pressed"),
+        style: "Delete",
+      },
+      {
+        text: "Update",
+        onPress: () => navigation.navigate("UpdateTaskScreen"),
+        style: "Update",
+      },
+    ]);
+
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={showAlert}>
       <View style={styles.titlecontainer}>
         <Text style={styles.title}>{title}</Text>
 
