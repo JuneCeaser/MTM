@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
   Alert,
+  ScrollView,
 } from "react-native";
 import React, { useState } from "react";
 import MyTabs from "./MyTabs";
@@ -45,7 +46,7 @@ export default function Login({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.maintextcontainer}>
         <Text style={styles.maintext}>Login</Text>
       </View>
@@ -86,19 +87,18 @@ export default function Login({ navigation }) {
           </Text>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    justifyContent: "center",
   },
   maintextcontainer: {
     flex: 2,
     backgroundColor: "#ffffff",
-    paddingTop: 20,
+    paddingTop: 30,
   },
   maintext: {
     fontSize: 35,
@@ -109,10 +109,12 @@ const styles = StyleSheet.create({
   inputcontainer: {
     flex: 3,
     backgroundColor: "#ffffff",
+    marginTop: 40,
   },
   signupbuttoncontainer: {
     flex: 3,
     backgroundColor: "#ffffff",
+    marginTop: 40,
   },
   input: {
     height: 40,

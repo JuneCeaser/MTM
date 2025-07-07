@@ -53,17 +53,14 @@ export default function UpdateTaskScreen({ navigation, route }) {
       Alert.alert("Error", "Failed to load task");
     }
   };
-
   useEffect(() => {
     loadTask();
   }, []);
-
   const updateTask = async () => {
     if (!taskId) {
       Alert.alert("Error", "No task ID provided");
       return;
     }
-
     try {
       const jsonValue = await AsyncStorage.getItem("tasksList2");
       let tasks = jsonValue != null ? JSON.parse(jsonValue) : [];
