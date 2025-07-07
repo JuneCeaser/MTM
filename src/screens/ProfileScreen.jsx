@@ -1,14 +1,34 @@
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function ProfileScreen({ navigation }) {
+  const [username, setUserName] = useState("");
+  const [useremail, setUserEmail] = useState("");
+
+  const loginFunction = async () => {
+    try {
+      const userData = await AsyncStorage.getItem("userdata");
+      const user = JSON.parse(userData);
+
+      setUserName(user.name);
+      setUserEmail(user.email);
+    } catch (e) {
+      // error reading value
+    }
+  };
+
+  useEffect(() => {
+    loginFunction();
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.container1}>
         <Text style={styles.nametext}>Full Name</Text>
-        <Text style={styles.username}>June Ceaser De Soysa</Text>
+        <Text style={styles.username}>{username}</Text>
         <Text style={styles.nametext}>E mail</Text>
-        <Text style={styles.username}>june@mainframe.lk</Text>
+        <Text style={styles.username}>{useremail}</Text>
         <View style={styles.buttoncontainer}>
           <TouchableOpacity
             style={styles.button}
