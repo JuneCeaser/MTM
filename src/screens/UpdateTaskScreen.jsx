@@ -35,32 +35,7 @@ export default function UpdateTaskScreen({ navigation, route }) {
     showMode("date");
   };
 
-  const loadTask = async () => {
-    try {
-      const jsonValue = await AsyncStorage.getItem("tasksList2");
-      const tasks = jsonValue != null ? JSON.parse(jsonValue) : [];
-      const task = tasks.find((t) => t.id === taskId);
-      if (task) {
-        setTitle(task.title);
-        setDescription(task.description);
-        setDate(new Date(task.dueDate));
-        setStatus(task.status);
-      } else {
-        Alert.alert("Error", "Task not found");
-        navigation.goBack();
-      }
-    } catch (e) {
-      Alert.alert("Error", "Failed to load task");
-    }
-  };
-  useEffect(() => {
-    loadTask();
-  }, []);
   const updateTask = async () => {
-    if (!taskId) {
-      Alert.alert("Error", "No task ID provided");
-      return;
-    }
     try {
       const jsonValue = await AsyncStorage.getItem("tasksList2");
       let tasks = jsonValue != null ? JSON.parse(jsonValue) : [];
