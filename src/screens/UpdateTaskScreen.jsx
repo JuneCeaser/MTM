@@ -18,7 +18,7 @@ export default function UpdateTaskScreen({ navigation, route }) {
   const [date, setDate] = useState(new Date());
   const [mode, setMode] = useState("date");
   const [show, setShow] = useState(false);
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("ToDo");
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate;
@@ -42,7 +42,7 @@ export default function UpdateTaskScreen({ navigation, route }) {
 
       tasks = tasks.map((task) =>
         task.id === taskId
-          ? { ...task, title, description, dueDate: date, status }
+          ? { ...task, title, description, date, status }
           : task
       );
 
