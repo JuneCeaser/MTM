@@ -10,9 +10,11 @@ export default function ToDoScreen({ navigation }) {
   const loadTasks = async () => {
     try {
       const jsonValue = await AsyncStorage.getItem("tasksList2");
-      const savedTasks = jsonValue != null ? JSON.parse(jsonValue) : [];
+      let tasks = jsonValue != null ? JSON.parse(jsonValue) : [];
 
-      setTasks(savedTasks);
+      tasks = tasks.filter((task) => task.status === "ToDo");
+
+      setTasks(tasks);
     } catch (e) {
       // error reading value
     }
