@@ -1,24 +1,58 @@
 import { View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import React from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export default function Task() {
+export default function Task({
+  navigation,
+  id,
+  title,
+  description,
+  date,
+  status,
+}) {
+  const deleteTask = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem("tasksList2");
+      let tasks = jsonValue != null ? JSON.parse(jsonValue) : [];
+
+      tasks = tasks.filter((task) => task.id !== id);
+      await AsyncStorage.setItem("tasksList2", JSON.stringify(tasks));
+      Alert.alert("Succesfull", "task deleted");
+    } catch (e) {
+      // error reading value
+    }
+  };
+
+  const showAlert = () =>
+    Alert.alert("Update or Delete task", "", [
+      {
+        text: "Cancel",
+        style: "cancel",
+      },
+      {
+        text: "Delete",
+        onPress: deleteTask,
+        style: "Delete",
+      },
+      {
+        text: "Update",
+        onPress: () => navigation.navigate("UpdateTaskScreen", { taskId: id }),
+        style: "Update",
+      },
+    ]);
+
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={showAlert}>
       <View style={styles.titlecontainer}>
-        <Text style={styles.title}>Task Title</Text>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => Alert.alert("hello", "this is alert")}
-        >
-          <Text>Status</Text>
+        <Text style={styles.title}>{title}</Text>
+
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>{status}</Text>
         </TouchableOpacity>
       </View>
-      <Text style={styles.decription}>
-        Lorem ipsum dolor sit, amet consectetur adipisicing asdsdfszdf
-        sdfdsdfsdfsfds sdfsdfsdf
-      </Text>
-      <Text style={styles.date}>2025/6/30</Text>
-    </View>
+      <Text style={styles.decription}>{description}</Text>
+      <Text style={styles.date}>{date}</Text>
+    </TouchableOpacity>
   );
 }
 
@@ -26,7 +60,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#3F559C",
     height: "auto",
-    marginTop: "10",
+    marginTop: 10,
     borderRadius: 10,
   },
   title: {
@@ -35,6 +69,7 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     paddingTop: 10,
     color: "#fff",
+    flexShrink: 1,
   },
   decription: {
     fontSize: 15,
@@ -54,11 +89,13 @@ const styles = StyleSheet.create({
   },
   titlecontainer: {
     flexDirection: "row",
+    justifyContent: "space-between",
   },
   button: {
     backgroundColor: "#fff",
-    marginLeft: 190,
+    marginLeft: 120,
     marginTop: 10,
+    marginRight: 10,
     paddingLeft: 20,
     paddingRight: 20,
     borderRadius: 5,

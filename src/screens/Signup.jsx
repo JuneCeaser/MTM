@@ -126,10 +126,12 @@ const styles = StyleSheet.create({
   inputcontainer: {
     flex: 3,
     backgroundColor: "#ffffff",
+    marginTop: 30,
   },
   signupbuttoncontainer: {
     flex: 3,
     backgroundColor: "#ffffff",
+    marginTop: 40,
   },
   input: {
     height: 40,
@@ -163,7 +165,7 @@ const styles = StyleSheet.create({
   buttoncontainer: {
     justifyContent: "center",
     paddingHorizontal: 20,
-    padding: 20,
+    marginTop: 20,
   },
   buttontext: {
     color: "#ffffff",

@@ -4,15 +4,21 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import React, { Component, useState } from "react";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { Ionicons } from "@expo/vector-icons";
+import { Picker } from "@react-native-picker/picker";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function AddScreeen() {
+  const [title, seTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [date, setDate] = useState(new Date());
   const [mode, setMode] = useState("date");
   const [show, setShow] = useState(false);
+  const [status, setStatus] = useState("");
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate;
@@ -29,6 +35,28 @@ export default function AddScreeen() {
     showMode("date");
   };
 
+  const saveTask = async () => {
+    const newTask = {
+      id: Date.now().toString(),
+      title: title,
+      description: description,
+      dueDate: date,
+      status: status,
+    };
+
+    try {
+      const jsonValue = await AsyncStorage.getItem("tasksList2");
+      const tasks = jsonValue != null ? JSON.parse(jsonValue) : [];
+
+      tasks.push(newTask);
+
+      await AsyncStorage.setItem("tasksList2", JSON.stringify(tasks));
+      Alert.alert("Task save succes");
+    } catch (e) {
+      // error reading value
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.titlecontainer}>
@@ -37,7 +65,11 @@ export default function AddScreeen() {
       <View style={styles.inputcontainer}>
         <View style={styles.inputitem}>
           <Text style={styles.formtext}>Title</Text>
-          <TextInput style={styles.input} placeholder="Enter Title" />
+          <TextInput
+            style={styles.input}
+            onChangeText={seTitle}
+            placeholder="Enter Title"
+          />
         </View>
         <View style={styles.inputitem}>
           <Text style={styles.formtext}>Discription</Text>
@@ -46,6 +78,7 @@ export default function AddScreeen() {
             multiline
             numberOfLines={4}
             style={styles.input}
+            onChangeText={setDescription}
             placeholder="Enter Discription"
           />
         </View>
@@ -63,9 +96,17 @@ export default function AddScreeen() {
             )}
           </TouchableOpacity>
         </View>
+        <Picker
+          selectedValue={setStatus}
+          onValueChange={(itemValue, itemIndex) => setStatus(itemValue)}
+        >
+          <Picker.Item label="ToDo" value="ToDo" />
+          <Picker.Item label="Inprogress" value="Inprogress" />
+          <Picker.Item label="Done" value="Done" />
+        </Picker>
 
         <View style={styles.buttoncontainer}>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={saveTask}>
             <Text style={styles.buttontext}>Save</Text>
           </TouchableOpacity>
         </View>
@@ -96,7 +137,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
   },
   emptyspace: {
-    flex: 2,
+    flex: 0.5,
     backgroundColor: "#ffffff",
   },
   formtext: {

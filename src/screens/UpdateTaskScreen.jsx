@@ -4,15 +4,21 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from "react-native";
-import React, { Component, useState } from "react";
-import MyTabs from "./MyTabs";
+import React, { useState, useEffect } from "react";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import { Picker } from "@react-native-picker/picker";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export default function UpdateTaskScreen({ navigation }) {
+export default function UpdateTaskScreen({ navigation, route }) {
+  const { taskId } = route.params;
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [date, setDate] = useState(new Date());
   const [mode, setMode] = useState("date");
   const [show, setShow] = useState(false);
+  const [status, setStatus] = useState("ToDo");
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate;
@@ -29,24 +35,50 @@ export default function UpdateTaskScreen({ navigation }) {
     showMode("date");
   };
 
+  const updateTask = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem("tasksList2");
+      let tasks = jsonValue != null ? JSON.parse(jsonValue) : [];
+
+      tasks = tasks.map((task) =>
+        task.id === taskId
+          ? { ...task, title, description, date, status }
+          : task
+      );
+
+      await AsyncStorage.setItem("tasksList2", JSON.stringify(tasks));
+      Alert.alert("Task updated successfully");
+      navigation.goBack();
+    } catch (e) {
+      Alert.alert("Error", "Failed to update task");
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.titlecontainer}>
-        <Text style={styles.title}>Update task </Text>
+        <Text style={styles.title}>Update task</Text>
       </View>
       <View style={styles.inputcontainer}>
         <View style={styles.inputitem}>
           <Text style={styles.formtext}>Title</Text>
-          <TextInput style={styles.input} placeholder="Enter Title" />
+          <TextInput
+            style={styles.input}
+            onChangeText={setTitle}
+            value={title}
+            placeholder="Enter Title"
+          />
         </View>
         <View style={styles.inputitem}>
-          <Text style={styles.formtext}>Discription</Text>
+          <Text style={styles.formtext}>Description</Text>
           <TextInput
             editable
             multiline
             numberOfLines={4}
             style={styles.input}
-            placeholder="Enter Discription"
+            onChangeText={setDescription}
+            value={description}
+            placeholder="Enter Description"
           />
         </View>
         <View style={styles.inputitem}>
@@ -63,12 +95,17 @@ export default function UpdateTaskScreen({ navigation }) {
             )}
           </TouchableOpacity>
         </View>
+        <Picker
+          selectedValue={status}
+          onValueChange={(itemValue) => setStatus(itemValue)}
+        >
+          <Picker.Item label="ToDo" value="ToDo" />
+          <Picker.Item label="Inprogress" value="Inprogress" />
+          <Picker.Item label="Done" value="Done" />
+        </Picker>
 
         <View style={styles.buttoncontainer}>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.navigate(MyTabs)}
-          >
+          <TouchableOpacity style={styles.button} onPress={updateTask}>
             <Text style={styles.buttontext}>Save</Text>
           </TouchableOpacity>
         </View>
