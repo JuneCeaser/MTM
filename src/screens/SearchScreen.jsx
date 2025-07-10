@@ -25,6 +25,7 @@ export default function SearchScreen({ route, navigation }) {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.text}>Seach Results</Text>
       <FlatList
         data={tasks}
         keyExtractor={(item) => item.id}
@@ -47,5 +48,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+    margin: 10,
+  },
+  text: {
+    fontSize: 30,
+    marginTop: 10,
+    fontWeight: "500",
   },
 });
