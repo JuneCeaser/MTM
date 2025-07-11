@@ -6,7 +6,9 @@ https://www.figma.com/proto/7U7MeOJ4VgQbQTAQmdryV0/MTM?page-id=0%3A1&node-id=37-
 
 To run the project - 
 
-1. yarn install
-2. Download the Expo Go app
-3. Run this command in terminal  ' yarn start '
-4. Scan the QR code from the expo app
+1. Clone the project
+2. Open in VS Code
+3. Run this command in the terminal - yarn start
+4. Download the Expo Go app on your mobile
+5. Run this command in the terminal - yarn start
+6. Scane the QR code
