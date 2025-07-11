@@ -1,18 +1,17 @@
-import { Text, View, Button, StyleSheet, ScrollView } from "react-native";
-import React, { Component, useEffect, useState } from "react";
+import { View, Text, SafeAreaView, StyleSheet, FlatList } from "react-native";
 import Task from "../components/Task";
+import React, { Component, useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { FlatList } from "react-native-gesture-handler";
 
-export default function ToDoScreen({ navigation }) {
+export default function SearchScreen({ route, navigation }) {
+  const { searchID } = route.params;
   const [tasks, setTasks] = useState([]);
-
   const loadTasks = async () => {
     try {
       const jsonValue = await AsyncStorage.getItem("tasksList2");
       let tasks = jsonValue != null ? JSON.parse(jsonValue) : [];
 
-      tasks = tasks.filter((task) => task.status === "ToDo");
+      tasks = tasks.filter((task) => task.title === searchID);
 
       setTasks(tasks);
     } catch (e) {
@@ -21,12 +20,12 @@ export default function ToDoScreen({ navigation }) {
   };
 
   useEffect(() => {
-    const unsubscribe = navigation.addListener("focus", loadTasks);
-    return unsubscribe;
-  }, [navigation]);
+    loadTasks();
+  }, [searchID]);
 
   return (
     <View style={styles.container}>
+      <Text style={styles.text}>Search Results</Text>
       <FlatList
         data={tasks}
         keyExtractor={(item) => item.id}
@@ -49,5 +48,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+    margin: 10,
+  },
+  text: {
+    fontSize: 30,
+    marginTop: 30,
+    fontWeight: "500",
   },
 });

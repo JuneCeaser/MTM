@@ -7,6 +7,7 @@ import MyTabs from "./src/screens/MyTabs";
 import HomeScreen from "./src/screens/HomeScreen";
 import UpdateTaskScreen from "./src/screens/UpdateTaskScreen";
 import Task from "./src/components/Task";
+import SearchScreen from "./src/screens/SearchScreen";
 
 const Stack = createStackNavigator();
 
@@ -38,6 +39,11 @@ export default function App() {
           options={{ headerShown: false }}
           name="Task"
           component={Task}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="SearchScreen"
+          component={SearchScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

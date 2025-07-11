@@ -10,6 +10,7 @@ import React, { useState, useEffect } from "react";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { Picker } from "@react-native-picker/picker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { SearchBar } from "react-native-screens";
 
 export default function UpdateTaskScreen({ navigation, route }) {
   const { taskId } = route.params;
@@ -34,6 +35,30 @@ export default function UpdateTaskScreen({ navigation, route }) {
   const showDatepicker = () => {
     showMode("date");
   };
+
+  const loadTask = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem("tasksList2");
+      const savedTasks = jsonValue != null ? JSON.parse(jsonValue) : [];
+
+      const task = savedTasks.find((t) => t.id === taskId);
+
+      if (task.id === taskId) {
+        setTitle(task.title);
+        setDate(new Date(task.dueDate));
+        setDescription(task.description);
+        setStatus(task.status);
+      } else {
+        Alert.alert("Error", "");
+      }
+    } catch (e) {
+      // error reading value
+    }
+  };
+
+  useEffect(() => {
+    loadTask();
+  }, []);
 
   const updateTask = async () => {
     try {

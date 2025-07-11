@@ -3,6 +3,7 @@ import React, { Component, useEffect, useState } from "react";
 import Task from "../components/Task";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { FlatList } from "react-native-gesture-handler";
+import TaskDone from "../components/TaskDone";
 
 export default function DoneScreen({ navigation }) {
   const [tasks, setTasks] = useState([]);
@@ -10,9 +11,11 @@ export default function DoneScreen({ navigation }) {
   const loadTasks = async () => {
     try {
       const jsonValue = await AsyncStorage.getItem("tasksList2");
-      const savedTasks = jsonValue != null ? JSON.parse(jsonValue) : [];
+      let tasks = jsonValue != null ? JSON.parse(jsonValue) : [];
 
-      setTasks(savedTasks);
+      tasks = tasks.filter((task) => task.status === "Done");
+
+      setTasks(tasks);
     } catch (e) {
       // error reading value
     }
@@ -29,7 +32,7 @@ export default function DoneScreen({ navigation }) {
         data={tasks}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <Task
+          <TaskDone
             navigation={navigation}
             id={item.id}
             title={item.title}
